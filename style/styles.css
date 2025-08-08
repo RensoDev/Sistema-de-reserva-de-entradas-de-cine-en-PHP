@@ -572,6 +572,66 @@ footer {
   margin: 5px 0;
 }
 
+#seat-map-container {
+    margin-bottom: 20px;
+}
+
+#seat-map {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    margin: 20px 0;
+}
+
+.seat {
+    background-color: #4CAF50;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.seat.selected {
+    background-color: #FFEB3B;
+}
+
+.seat.occupied {
+    background-color: #f44336;
+    cursor: not-allowed;
+}
+
+.seat-legend {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.seat-example {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 5px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.seat-example.available {
+    background-color: #4CAF50;
+}
+
+.seat-example.occupied {
+    background-color: #f44336;
+}
+
+.seat-example.selected {
+    background-color: #FFEB3B;
+}
+
 /* Schedule Styling */
 
 .schedule-section {

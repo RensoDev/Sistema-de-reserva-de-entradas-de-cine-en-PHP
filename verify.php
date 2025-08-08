@@ -12,6 +12,7 @@ $type = $_POST['type'];
 $date = $_POST['date'];
 $time = $_POST['hour'];
 $movieid = $_POST['movie_id'];
+$seats = $_POST['selected_seats'];
 $order = "ARVR" . rand(10000, 99999999);
 $cust  = "CUST" . rand(1000, 999999);
 
@@ -26,7 +27,7 @@ if ((!$_POST['submit'])) {
 
 if (isset($_POST['submit'])) {
 
-    $qry = "INSERT INTO bookingtable(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`,`amount`, `ORDERID`)VALUES ('$movieid','$theatre','$type','$date','$time','$fname','$lname','$mobile','$email','Not Paid','$order')";
+    $qry = "INSERT INTO bookingtable(`movieID`, `bookingTheatre`, `bookingType`, `bookingDate`, `bookingTime`, `bookingFName`, `bookingLName`, `bookingPNumber`, `bookingEmail`, `bookingSeat`, `amount`, `ORDERID`)VALUES ('$movieid','$theatre','$type','$date','$time','$fname','$lname','$mobile','$email', '$seats', 'Not Paid','$order')";
 
     $result = mysqli_query($con, $qry);
 }
