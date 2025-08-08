@@ -1166,7 +1166,7 @@ footer {
   display: flex;
   align-items: center;
   position: absolute;
-  top: 1em;
+  top: -2em;
   right: 1em;
 }
 .theme-switch {
