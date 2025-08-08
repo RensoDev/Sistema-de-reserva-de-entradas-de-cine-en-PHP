@@ -6,7 +6,7 @@
 </div>    
 </div>
 <div class="footer-section footer-section2">
-    <h2><i class="fas fa-user-alt"></i> Social Media</h2>
+    <h2><i class="fas fa-user-alt"></i> Redes Sociales</h2>
     <div class="footer-section-inner-container">
         <span><i class="fab fa-lg fa-facebook-square"></i> Facebook</span>
         <span><i class="fab fa-lg fa-twitter-square"></i> Twitter</span>
@@ -14,10 +14,10 @@
     </div>
 </div>
 <div class="footer-section  footer-section3">
-    <p>© 2020 ARVR Movies. Created by Query Coder's. </p>
-    <a>Advertising</a>
-    <a>Privacy Policy</a>
-    <a href="contact-us.php">Contact</a>
+    <p>© 2020 Películas ARVR. Creado por Query Coder's. </p>
+    <a>Publicidad</a>
+    <a>Política de Privacidad</a>
+    <a href="contact-us.php">Contacto</a>
 </div>
 
 <!-- <footer class="bg-dark d-flex justify-content-center">

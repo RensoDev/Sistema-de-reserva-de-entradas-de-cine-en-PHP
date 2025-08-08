@@ -18,7 +18,7 @@ $row = mysqli_fetch_array($movieImageById);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style/styles.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-    <title>Book <?php echo $row['movieTitle']; ?> Now</title>
+    <title>Reserva <?php echo $row['movieTitle']; ?> Ahora</title>
     <link rel="icon" type="image/png" href="img/logo.png">
     <script src="_.js "></script>
 </head>
@@ -26,7 +26,7 @@ $row = mysqli_fetch_array($movieImageById);
 <body style="background-color:#6e5a11;">
     <div class="booking-panel">
         <div class="booking-panel-section booking-panel-section1">
-            <h1>RESERVE YOUR TICKET</h1>
+            <h1>RESERVA TU ENTRADA</h1>
         </div>
         <div class="booking-panel-section booking-panel-section2" onclick="window.history.go(-1); return false;">
             <i class="fas fa-2x fa-times"></i>
@@ -43,15 +43,15 @@ $row = mysqli_fetch_array($movieImageById);
             <div class="movie-information">
                 <table>
                     <tr>
-                        <td>GENGRE</td>
+                        <td>GÉNERO</td>
                         <td><?php echo $row['movieGenre']; ?></td>
                     </tr>
                     <tr>
-                        <td>DURATION</td>
+                        <td>DURACIÓN</td>
                         <td><?php echo $row['movieDuration']; ?></td>
                     </tr>
                     <tr>
-                        <td>RELEASE DATE</td>
+                        <td>FECHA DE ESTRENO</td>
                         <td><?php echo $row['movieRelDate']; ?></td>
                     </tr>
                     <tr>
@@ -59,7 +59,7 @@ $row = mysqli_fetch_array($movieImageById);
                         <td><?php echo $row['movieDirector']; ?></td>
                     </tr>
                     <tr>
-                        <td>ACTORS</td>
+                        <td>ACTORES</td>
                         <td><?php echo $row['movieActors']; ?></td>
                     </tr>
                 </table>
@@ -69,14 +69,14 @@ $row = mysqli_fetch_array($movieImageById);
 
 
                     <select name="theatre" required>
-                        <option value="" disabled selected>THEATRE</option>
-                        <option value="main-hall">Main Hall</option>
-                        <option value="vip-hall">VIP Hall</option>
-                        <option value="private-hall">Private Hall</option>
+                        <option value="" disabled selected>SALA</option>
+                        <option value="main-hall">Sala Principal</option>
+                        <option value="vip-hall">Sala VIP</option>
+                        <option value="private-hall">Sala Privada</option>
                     </select>
 
                     <select name="type" required>
-                        <option value="" disabled selected>TYPE</option>
+                        <option value="" disabled selected>TIPO</option>
                         <option value="3d">3D</option>
                         <option value="2d">2D</option>
                         <option value="imax">IMAX</option>
@@ -84,16 +84,16 @@ $row = mysqli_fetch_array($movieImageById);
                     </select>
 
                     <select name="date" required>
-                        <option value="" disabled selected>DATE</option>
-                        <option value="12-3">March 12,2019</option>
-                        <option value="13-3">March 13,2019</option>
-                        <option value="14-3">March 14,2019</option>
-                        <option value="15-3">March 15,2019</option>
-                        <option value="16-3">March 16,2019</option>
+                        <option value="" disabled selected>FECHA</option>
+                        <option value="12-3">Marzo 12,2019</option>
+                        <option value="13-3">Marzo 13,2019</option>
+                        <option value="14-3">Marzo 14,2019</option>
+                        <option value="15-3">Marzo 15,2019</option>
+                        <option value="16-3">Marzo 16,2019</option>
                     </select>
 
                     <select name="hour" required>
-                        <option value="" disabled selected>TIME</option>
+                        <option value="" disabled selected>HORA</option>
                         <option value="09-00">09:00 AM</option>
                         <option value="12-00">12:00 AM</option>
                         <option value="15-00">03:00 PM</option>
@@ -102,17 +102,17 @@ $row = mysqli_fetch_array($movieImageById);
                         <option value="24-00">12:00 PM</option>
                     </select>
 
-                    <input placeholder="First Name" type="text" name="fName" required>
+                    <input placeholder="Nombre" type="text" name="fName" required>
 
-                    <input placeholder="Last Name" type="text" name="lName">
+                    <input placeholder="Apellido" type="text" name="lName">
 
-                    <input placeholder="Phone Number" type="text" name="pNumber" required>
-                    <input placeholder="email" type="email" name="email" required>
+                    <input placeholder="Número de Teléfono" type="text" name="pNumber" required>
+                    <input placeholder="Correo Electrónico" type="email" name="email" required>
                     <input type="hidden" name="movie_id" value="<?php echo $id; ?>">
 
 
 
-                    <button type="submit" value="save" name="submit" class="form-btn">Book a seat</button>
+                    <button type="submit" value="save" name="submit" class="form-btn">Reservar un asiento</button>
 
                 </form>
             </div>
