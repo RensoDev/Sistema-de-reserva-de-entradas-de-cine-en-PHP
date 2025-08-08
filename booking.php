@@ -65,9 +65,17 @@ $row = mysqli_fetch_array($movieImageById);
                 </table>
             </div>
             <div class="booking-form-container">
+                <div id="seat-map-container">
+                    <h3>Selecciona tus asientos</h3>
+                    <div id="seat-map"></div>
+                    <div class="seat-legend">
+                        <div><span class="seat-example available"></span> Disponible</div>
+                        <div><span class="seat-example occupied"></span> Ocupado</div>
+                        <div><span class="seat-example selected"></span> Seleccionado</div>
+                    </div>
+                </div>
                 <form action="verify.php" method="POST">
-
-
+                    <input type="hidden" name="selected_seats" id="selected-seats" value="">
                     <select name="theatre" required>
                         <option value="" disabled selected>SALA</option>
                         <option value="main-hall">Sala Principal</option>
@@ -121,6 +129,81 @@ $row = mysqli_fetch_array($movieImageById);
 
     <script src="scripts/jquery-3.3.1.min.js "></script>
     <script src="scripts/script.js "></script>
+    <script>
+        $(document).ready(function() {
+            const seatMap = document.getElementById('seat-map');
+            const selectedSeatsInput = document.getElementById('selected-seats');
+            let selectedSeats = [];
+
+            function generateSeatMap() {
+                let seats = '';
+                for (let i = 0; i < 5; i++) {
+                    for (let j = 0; j < 10; j++) {
+                        const seatId = String.fromCharCode(65 + i) + (j + 1);
+                        seats += `<div class="seat" data-seat-id="${seatId}">${seatId}</div>`;
+                    }
+                }
+                seatMap.innerHTML = seats;
+            }
+
+            function updateSelectedSeats() {
+                selectedSeatsInput.value = selectedSeats.join(',');
+                $('.seat.selected').removeClass('selected');
+                selectedSeats.forEach(seatId => {
+                    $(`[data-seat-id=${seatId}]`).addClass('selected');
+                });
+            }
+
+            function fetchBookedSeats() {
+                const movieId = <?php echo $id; ?>;
+                const date = $('select[name="date"]').val();
+                const time = $('select[name="hour"]').val();
+
+                if (movieId && date && time) {
+                    $.ajax({
+                        url: 'get_booked_seats.php',
+                        type: 'GET',
+                        data: { movieId, date, time },
+                        success: function(response) {
+                            const bookedSeats = JSON.parse(response);
+                            $('.seat').each(function() {
+                                const seatId = $(this).data('seat-id');
+                                if (bookedSeats.includes(seatId)) {
+                                    $(this).addClass('occupied').off('click');
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+
+            generateSeatMap();
+            fetchBookedSeats();
+
+            $('select[name="date"], select[name="hour"]').change(function() {
+                $('.seat').removeClass('occupied').off('click').on('click', function() {
+                    const seatId = $(this).data('seat-id');
+                    if (selectedSeats.includes(seatId)) {
+                        selectedSeats = selectedSeats.filter(s => s !== seatId);
+                    } else {
+                        selectedSeats.push(seatId);
+                    }
+                    updateSelectedSeats();
+                });
+                fetchBookedSeats();
+            });
+
+            $(document).on('click', '.seat:not(.occupied)', function() {
+                const seatId = $(this).data('seat-id');
+                if (selectedSeats.includes(seatId)) {
+                    selectedSeats = selectedSeats.filter(s => s !== seatId);
+                } else {
+                    selectedSeats.push(seatId);
+                }
+                updateSelectedSeats();
+            });
+        });
+    </script>
 </body>
 
 </html>
