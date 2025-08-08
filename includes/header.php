@@ -13,4 +13,10 @@
             <li><a href="contact-us.php">Contacto</a></li>
         </ul>
     </nav>
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+    </div>
 </div>
