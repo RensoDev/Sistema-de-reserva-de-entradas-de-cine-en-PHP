@@ -1,10 +1,18 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include "config.php";
 
 // Check user login or not
 if (!isset($_SESSION['uname'])) {
     header('Location: index.php');
+    exit(); // Added exit to prevent further script execution
 }
+
+// For debugging: Display session username
+// echo "Session Username: " . (isset($_SESSION['uname']) ? $_SESSION['uname'] : "Not Set") . "<br>";
 
 ?>
 <!DOCTYPE html>
@@ -127,9 +135,9 @@ if (!isset($_SESSION['uname'])) {
         </div>
     </div>
 
-    <script src="../scripts/jquery-3.3.1.min.js "></script>
-    <script src="../scripts/owl.carousel.min.js "></script>
-    <script src="../scripts/script.js "></script>
+    <!-- <script src="../scripts/jquery-3.3.1.min.js "></script> -->
+    <!-- <script src="../scripts/owl.carousel.min.js "></script> -->
+    <!-- <script src="../scripts/script.js "></script> -->
 </body>
 
 </html>

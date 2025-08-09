@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include "config.php";
 
 
@@ -65,25 +69,24 @@ if (isset($_POST['but_logout'])) {
                             <th>More</th>
 
                         </tr>
-                        <tbody>
-                            <?php
+                            <tbody>
+                                <?php
 
-                            $con = mysqli_connect($host, $user, $password, $dbname);
-                            $select = "SELECT * FROM `bookingtable`";
-                            $run = mysqli_query($con, $select);
-                            while ($row = mysqli_fetch_array($run)) {
-                                $bookingid = $row['bookingID'];
-                                $movieID = $row['movieID'];
-                                $bookingFName = $row['bookingFName'];
-                                $bookingLName = $row['bookingLName'];
-                                $mobile = $row['bookingPNumber'];
-                                $email = $row['bookingEmail'];
-                                $date = $row['bookingDate'];
-                                $theatre = $row['bookingTheatre'];
-                                $type = $row['bookingType'];
-                                $time = $row['bookingTime'];
-                                $ORDERID = $row['ORDERID'];
-                                $amount = $row['amount'];
+                                $select = "SELECT * FROM `bookingtable`";
+                                $run = mysqli_query($con, $select);
+                                while ($row = mysqli_fetch_array($run)) {
+                                    $bookingid = $row['bookingID'];
+                                    $movieID = $row['movieID'];
+                                    $bookingFName = $row['bookingFName'];
+                                    $bookingLName = $row['bookingLName'];
+                                    $mobile = $row['bookingPNumber'];
+                                    $email = $row['bookingEmail'];
+                                    $date = $row['bookingDate'];
+                                    $theatre = $row['bookingTheatre'];
+                                    $type = $row['bookingType'];
+                                    $time = $row['bookingTime'];
+                                    $ORDERID = $row['ORDERID'];
+                                    $amount = $row['amount'];
 
                                 
 

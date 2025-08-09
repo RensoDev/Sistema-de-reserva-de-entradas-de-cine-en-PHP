@@ -920,7 +920,6 @@ footer {
 
 .admin-section1 ul li {
   width: 100%;
-  padding: 20px 10px;
   background-color: #3a3a3a;
   color: #fff;
   transition: all 0.3s ease;
@@ -928,10 +927,20 @@ footer {
   cursor: pointer;
 }
 
+.admin-section1 ul li a {
+  display: block;
+  width: 100%;
+  padding: 20px 10px; /* Move padding to the anchor tag */
+  color: #fff; /* Ensure text color is white */
+}
+
 .admin-section1 ul li:hover {
   background-color: var(--primary-color);
-  color: #fff;
   border-left: #fff 3px solid;
+}
+
+.admin-section1 ul li:hover a {
+  color: #fff; /* Ensure text color remains white on hover */
 }
 
 .admin-section1 ul ul {
@@ -946,6 +955,17 @@ footer {
 
 .admin-section1 ul li i {
   margin-right: 20px;
+  /* Position the icon relative to the li, but ensure it doesn't interfere with the anchor's click area */
+  position: absolute;
+  left: 10px; /* Adjust as needed */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1; /* Ensure icon is above the anchor text if needed */
+}
+
+/* Adjust padding for the anchor to make space for the icon */
+.admin-section1 ul li a {
+    padding-left: 40px; /* Adjust based on icon size and margin */
 }
 
 .admin-section2 {
