@@ -1302,3 +1302,33 @@ input:checked + .slider:before {
 .payment-option-btn i {
     margin-right: 10px;
 }
+
+/* Dark Mode Seat Map */
+body.dark-mode .booking-panel {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode .booking-panel-section4 {
+    background-color: #444;
+    border-color: var(--primary-color);
+}
+
+body.dark-mode .seat {
+    background-color: #5a5a5a;
+    color: #fff;
+}
+
+body.dark-mode .seat.selected {
+    background-color: #fdd835; /* Yellow for selected */
+    color: #000;
+}
+
+body.dark-mode .seat.occupied {
+    background-color: #d32f2f; /* Red for occupied */
+    color: #fff;
+}
+
+body.dark-mode .seat-legend div {
+    color: #fff;
+}

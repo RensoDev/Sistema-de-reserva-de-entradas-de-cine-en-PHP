@@ -18,6 +18,10 @@ if (isset($_GET['movieId']) && isset($_GET['date']) && isset($_GET['time'])) {
         $bookedSeats = array_merge($bookedSeats, $seats);
     }
 
-    echo json_encode($bookedSeats);
+    // Asientos de simulación (siempre ocupados)
+    $simulatedOccupiedSeats = ["A5", "B2", "C8", "D1", "E6"];
+    $finalBookedSeats = array_unique(array_merge($bookedSeats, $simulatedOccupiedSeats));
+
+    echo json_encode($finalBookedSeats);
 }
 ?>
