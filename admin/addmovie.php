@@ -140,6 +140,7 @@ if (isset($_POST['but_logout'])) {
                         <h2>Recent Movies</h2>
                         <i class="fas fa-film" style="background-color: #4547cf"></i>
                     </div>
+                    <a href="temp_delete_movies.php" onclick="return confirm('¿Estás seguro de que quieres eliminar TODAS las películas? Esta acción no se puede deshacer.');" class="btn btn-danger" style="margin-bottom: 10px;">Eliminar Todas las Películas</a>
 
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
