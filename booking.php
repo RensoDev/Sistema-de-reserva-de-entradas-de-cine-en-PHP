@@ -120,10 +120,21 @@ $row = mysqli_fetch_array($movieImageById);
 
 
 
-                    <button type="submit" value="save" name="submit" class="form-btn">Reservar un asiento</button>
+                    <button type="submit" value="save" name="submit" class="form-btn" id="book-seat-btn">Reservar un asiento</button>
 
                 </form>
             </div>
+        </div>
+    </div>
+
+    <!-- Payment Simulation Modal -->
+    <div id="payment-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>Procesando Pago...</h2>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+            <p>Por favor, espere mientras procesamos su pago.</p>
         </div>
     </div>
 
@@ -201,6 +212,35 @@ $row = mysqli_fetch_array($movieImageById);
                     selectedSeats.push(seatId);
                 }
                 updateSelectedSeats();
+            });
+
+            // Combined validation and payment simulation logic
+            $('#book-seat-btn').on('click', function(e) {
+                if (selectedSeats.length === 0) {
+                    alert('Por favor, selecciona al menos un asiento.');
+                    e.preventDefault(); // Prevent form submission
+                } else {
+                    e.preventDefault(); // Prevent default form submission to show modal
+                    $('#payment-modal').css('display', 'flex'); // Show the modal
+
+                    let progress = 0;
+                    const progressBar = $('.progress-bar');
+                    const interval = setInterval(() => {
+                        progress += 10; // Increment progress
+                        if (progress > 100) {
+                            progress = 100;
+                            clearInterval(interval);
+                            // Simulate successful payment and submit the form
+                            setTimeout(() => {
+                                $('#payment-modal').hide();
+                                // Submit the form programmatically
+                                $('form')[0].submit();
+                            }, 1000); // Short delay before hiding modal and submitting
+                        }
+                        progressBar.css('width', progress + '%');
+                        progressBar.text(progress + '%');
+                    }, 300); // Adjust interval for animation speed
+                }
             });
         });
     </script>
