@@ -130,11 +130,46 @@ $row = mysqli_fetch_array($movieImageById);
     <!-- Payment Simulation Modal -->
     <div id="payment-modal" class="modal" style="display:none;">
         <div class="modal-content">
-            <h2>Procesando Pago...</h2>
-            <div class="progress-bar-container">
-                <div class="progress-bar"></div>
+            <div id="payment-selection">
+                <h2>Selecciona un método de pago</h2>
+                <div class="payment-options">
+                    <button class="payment-option-btn" data-payment="yape">
+                        <img src="img/yape-logo.png" alt="Yape">
+                        Pagar con Yape
+                    </button>
+                    <button class="payment-option-btn" data-payment="plin">
+                        <img src="img/plin-logo.png" alt="Plin">
+                        Pagar con Plin
+                    </button>
+                    <button class="payment-option-btn" data-payment="card">
+                        <i class="fas fa-credit-card"></i>
+                        Pagar con Tarjeta
+                    </button>
+                </div>
             </div>
-            <p>Por favor, espere mientras procesamos su pago.</p>
+            <div id="payment-processing" style="display:none;">
+                <h2 id="payment-method-title"></h2>
+                <div id="yape-plin-qr" style="display:none;">
+                    <p>Escanea el código QR para pagar.</p>
+                    <img src="img/qr-code-placeholder.png" alt="QR Code" style="max-width: 200px;">
+                    <p>Una vez completado el pago, serás redirigido.</p>
+                </div>
+                <div id="card-form" style="display:none;">
+                    <input type="text" placeholder="Número de Tarjeta" style="width: 100%; margin-bottom: 10px;">
+                    <input type="text" placeholder="MM/AA" style="width: 48%; margin-right: 4%;">
+                    <input type="text" placeholder="CVC" style="width: 48%;">
+                    <button id="pay-now-btn" class="form-btn" style="margin-top: 20px;">Pagar Ahora</button>
+                </div>
+                <div class="progress-bar-container" style="display:none;">
+                    <div class="progress-bar"></div>
+                </div>
+                <p id="payment-status-text"></p>
+            </div>
+            <div id="payment-success" style="display:none;">
+                <img src="img/screenshot/15.png" alt="Pago Exitoso" style="max-width: 150px;">
+                <h2>¡Pago Exitoso!</h2>
+                <p>Tu reserva ha sido confirmada.</p>
+            </div>
         </div>
     </div>
 
@@ -214,33 +249,61 @@ $row = mysqli_fetch_array($movieImageById);
                 updateSelectedSeats();
             });
 
-            // Combined validation and payment simulation logic
+            function showPaymentSuccessAndSubmit() {
+                $('#payment-processing').hide();
+                $('#payment-success').show();
+                setTimeout(() => {
+                    $('#payment-modal').hide();
+                    $('form')[0].submit();
+                }, 2000); // Wait 2 seconds on success screen
+            }
+
             $('#book-seat-btn').on('click', function(e) {
+                e.preventDefault();
                 if (selectedSeats.length === 0) {
                     alert('Por favor, selecciona al menos un asiento.');
-                    e.preventDefault(); // Prevent form submission
-                } else {
-                    e.preventDefault(); // Prevent default form submission to show modal
-                    $('#payment-modal').css('display', 'flex'); // Show the modal
-
-                    let progress = 0;
-                    const progressBar = $('.progress-bar');
-                    const interval = setInterval(() => {
-                        progress += 10; // Increment progress
-                        if (progress > 100) {
-                            progress = 100;
-                            clearInterval(interval);
-                            // Simulate successful payment and submit the form
-                            setTimeout(() => {
-                                $('#payment-modal').hide();
-                                // Submit the form programmatically
-                                $('form')[0].submit();
-                            }, 1000); // Short delay before hiding modal and submitting
-                        }
-                        progressBar.css('width', progress + '%');
-                        progressBar.text(progress + '%');
-                    }, 300); // Adjust interval for animation speed
+                    return;
                 }
+                // Reset modal to initial state
+                $('#payment-selection').show();
+                $('#payment-processing, #payment-success, #yape-plin-qr, #card-form, .progress-bar-container').hide();
+                $('#payment-modal').css('display', 'flex');
+            });
+
+            $('.payment-option-btn').on('click', function() {
+                const paymentMethod = $(this).data('payment');
+                $('#payment-selection').hide();
+                $('#payment-processing').show();
+
+                if (paymentMethod === 'yape' || paymentMethod === 'plin') {
+                    $('#payment-method-title').text('Pagando con ' + (paymentMethod === 'yape' ? 'Yape' : 'Plin'));
+                    $('#yape-plin-qr').show();
+                    // Simulate payment confirmation after showing QR for a few seconds
+                    setTimeout(showPaymentSuccessAndSubmit, 4000);
+                } else if (paymentMethod === 'card') {
+                    $('#payment-method-title').text('Pagando con Tarjeta');
+                    $('#card-form').show();
+                }
+            });
+
+            $('#pay-now-btn').on('click', function() {
+                $('#card-form').hide();
+                $('.progress-bar-container').show();
+                $('#payment-status-text').text('Procesando...');
+
+                let progress = 0;
+                const progressBar = $('.progress-bar');
+                const interval = setInterval(() => {
+                    progress += 10;
+                    if (progress > 100) {
+                        progress = 100;
+                        clearInterval(interval);
+                        $('#payment-status-text').text('¡Pago verificado!');
+                        setTimeout(showPaymentSuccessAndSubmit, 1000);
+                    }
+                    progressBar.css('width', progress + '%');
+                    progressBar.text(progress + '%');
+                }, 200);
             });
         });
     </script>
