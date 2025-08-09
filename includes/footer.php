@@ -14,7 +14,7 @@
     </div>
 </div>
 <div class="footer-section  footer-section3">
-    <p>© 2020 Películas ARVR. Creado por Query Coder's. </p>
+    <p>© 2025 ARVR Cinema. Desarrollado por Renso Abraham Mamani. </p>
     <a>Publicidad</a>
     <a>Política de Privacidad</a>
     <a href="contact-us.php">Contacto</a>
