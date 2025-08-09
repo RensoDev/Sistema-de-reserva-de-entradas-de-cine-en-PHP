@@ -18,24 +18,6 @@ El sistema permite a los usuarios consultar las películas recientes, reservar y
 - **Simulación de Pago:** Un flujo de pago mejorado que simula métodos de pago populares en Perú, como Yape y Plin.
 - **Modo Oscuro:** Un interruptor para cambiar entre el tema claro y oscuro.
 
-## Instalación
-
-Para este proyecto, se utilizó [XAMPP](https://www.apachefriends.org/).
-
-1.  Abre **PHPMyAdmin**.
-2.  Crea una nueva base de datos (por ejemplo, `cinema_db`).
-3.  Importa `database/cinema_db.sql` para crear las tablas iniciales.
-4.  Importa `database/showtimes.sql` para crear la tabla de funciones.
-5.  Abre `connection.php` y actualiza el nombre de la base de datos y la contraseña si es necesario.
-6.  Ve a la carpeta `admin`, abre `config.php` y actualiza el nombre de la base de datos y la contraseña.
-
-## Uso
-
-### Acceso al Panel de Administrador
-
--   **Usuario:** 123
--   **Contraseña:** 123
-
 ### Simulación de Pago
 
 El sistema incluye una simulación de pago con métodos peruanos. Al reservar una entrada, se presentarán las siguientes opciones:
@@ -51,15 +33,4 @@ El sistema incluye una simulación de pago con métodos peruanos. Al reservar un
 
 ## Desarrollado Por
 
--   **Renso Abraham Mamani**
-
-## Imágenes del Sistema
-
-<img src="img/screenshot/1.png" width="45%">
-<img src="img/screenshot/2.png" width="45%">
-<img src="img/screenshot/3.png" width="45%">
-<img src="img/screenshot/4.png" width="45%">
-<img src="img/screenshot/13.png" width="45%">
-<img src="img/screenshot/14.png" width="45%">
-<img src="img/screenshot/15.png" width="45%">
-<img src="database/ER.png" width="90%">
+-   **Renso Abraham Mamani Mamani**
