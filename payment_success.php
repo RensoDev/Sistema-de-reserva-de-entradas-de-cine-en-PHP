@@ -96,7 +96,9 @@
             <p><strong>Email:</strong> <span id="receipt-email"></span></p>
             <p><strong>Teléfono:</strong> <span id="receipt-mobile"></span></p>
 
-            <div id="qr-code"></div>
+            <div id="qr-code">
+                <img id="qr-code-image" src="Verify.png" alt="Código QR" style="max-width: 200px;">
+            </div>
             <p class="text-muted">Escanea el QR para más información o para acceder a tu entrada.</p>
         </div>
 
@@ -104,9 +106,6 @@
             <a href="index.php">Volver a la página principal</a>
         </div>
     </div>
-
-    <!-- QR Code Generator Library -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -123,6 +122,7 @@
             const type = urlParams.get('type');
             const date = urlParams.get('date');
             const time = urlParams.get('time');
+            // const qrCodePath = urlParams.get('qr_code_path'); // No longer needed as src is hardcoded
 
             document.getElementById('receipt-order-id').textContent = orderId || 'N/A';
             document.getElementById('receipt-name').textContent = name || 'N/A';
@@ -136,20 +136,11 @@
             document.getElementById('receipt-email').textContent = email || 'N/A';
             document.getElementById('receipt-mobile').textContent = mobile || 'N/A';
 
-            // Generate QR Code
-            const qrCodeData = `Order ID: ${orderId}\nName: ${name}\nMovie: ${movieTitle}\nSeats: ${seats}\nAmount: $${amount}\nDate: ${date} ${time}`;
-            const qrCodeElement = document.getElementById('qr-code');
-
-            if (qrCodeElement) {
-                new QRCode(qrCodeElement, {
-                    text: qrCodeData,
-                    width: 128,
-                    height: 128,
-                    colorDark : "#000000",
-                    colorLight : "#ffffff",
-                    correctLevel : QRCode.CorrectLevel.H
-                });
-            }
+            // Display QR Code image (src is now set directly in HTML)
+            // const qrCodeImageElement = document.getElementById('qr-code-image');
+            // if (qrCodeImageElement) {
+            //     qrCodeImageElement.src = 'Verify.png'; // Always use Verify.png
+            // }
         });
     </script>
 </body>

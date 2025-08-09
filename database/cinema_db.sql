@@ -78,6 +78,16 @@ CREATE TABLE `movietable` (
 --
 -- Dumping data for table `movietable`
 --
+CREATE TABLE showtimes (
+    showtimeID INT PRIMARY KEY AUTO_INCREMENT,
+    movieID INT,
+    showtimeDate DATE,
+    showtimeTime TIME,
+    hall VARCHAR(255),
+    price DECIMAL(10, 2),
+    FOREIGN KEY (movieID) REFERENCES movieTable(movieID)
+);
+
 
 INSERT INTO `movietable`
 (`movieID`, `movieImg`, `movieTitle`, `movieGenre`, `movieDuration`, `movieRelDate`, `movieDirector`, `movieActors`, `mainhall`, `viphall`, `privatehall`) VALUES
@@ -183,3 +193,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

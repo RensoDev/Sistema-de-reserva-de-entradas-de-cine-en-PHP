@@ -117,7 +117,7 @@ $row = mysqli_fetch_array($movieImageById);
                     <input placeholder="Número de Teléfono" type="text" name="pNumber" required>
                     <input placeholder="Correo Electrónico" type="email" name="email" required>
                     <input type="hidden" name="movie_id" value="<?php echo $id; ?>">
-
+                    <input type="hidden" name="payment_method" id="payment-method-input" value="">
 
 
                     <button type="submit" value="save" name="submit" class="form-btn" id="book-seat-btn">Reservar un asiento</button>
@@ -151,7 +151,7 @@ $row = mysqli_fetch_array($movieImageById);
                 <h2 id="payment-method-title"></h2>
                 <div id="yape-plin-qr" style="display:none;">
                     <p>Escanea el código QR para pagar.</p>
-                    <img src="img/qr-code-placeholder.png" alt="QR Code" style="max-width: 200px;">
+                    <img id="qr-code-display" src="img/qr-code-placeholder.png" alt="QR Code" style="max-width: 200px;">
                     <p>Una vez completado el pago, serás redirigido.</p>
                 </div>
                 <div id="card-form" style="display:none;">
@@ -179,6 +179,7 @@ $row = mysqli_fetch_array($movieImageById);
         $(document).ready(function() {
             const seatMap = document.getElementById('seat-map');
             const selectedSeatsInput = document.getElementById('selected-seats');
+            const paymentMethodInput = document.getElementById('payment-method-input');
             let selectedSeats = [];
 
             function generateSeatMap() {
@@ -272,6 +273,7 @@ $row = mysqli_fetch_array($movieImageById);
 
             $('.payment-option-btn').on('click', function() {
                 const paymentMethod = $(this).data('payment');
+                paymentMethodInput.value = paymentMethod; // Set the hidden input value
                 $('#payment-selection').hide();
                 $('#payment-processing').show();
 
