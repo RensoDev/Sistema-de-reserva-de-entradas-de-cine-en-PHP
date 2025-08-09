@@ -61,7 +61,7 @@
                     <input type="text" class="textbox" id="txt_uname" name="txt_uname" placeholder="Username" />
                 </div>
                 <div>
-                    <input type="password" class="textbox" id="txt_uname" name="txt_pwd" placeholder="Password" />
+                    <input type="password" class="textbox" id="txt_pwd" name="txt_pwd" placeholder="Password" />
                 </div>
                 <div>
                     <input type="submit" value="Submit" name="but_submit" id="but_submit" />
@@ -83,15 +83,21 @@ if (isset($_POST['but_submit'])) {
 
     if ($uname != "" && $password != "") {
 
-        $sql_query = "select count(*) as cntUser from users where username='" . $uname . "' and password='" . $password . "'";
-        $result = mysqli_query($con, $sql_query);
-        $row = mysqli_fetch_array($result);
+        $sql_query = "SELECT * FROM users WHERE username = ?";
+        $stmt = mysqli_prepare($con, $sql_query);
+        mysqli_stmt_bind_param($stmt, "s", $uname);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
 
-        $count = $row['cntUser'];
-
-        if ($count > 0) {
-            $_SESSION['uname'] = $uname;
-            header('Location: admin.php');
+        if ($row = mysqli_fetch_assoc($result)) {
+            // Verify the password
+            if (password_verify($password, $row['password'])) {
+                $_SESSION['uname'] = $uname;
+                header('Location: admin.php');
+                exit();
+            } else {
+                echo "Invalid username and password";
+            }
         } else {
             echo "Invalid username and password";
         }

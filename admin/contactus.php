@@ -50,7 +50,7 @@
                             $host = "localhost"; /* Host name */
                             $user = "root"; /* User */
                             $password = ""; /* Password */
-                            $dbname = "cinema_db"; /* Database name */
+                            $dbname = "movie_ticket_booking_system"; /* Database name */
 
                             $select = "SELECT * FROM `feedbacktable`";
                             $run = mysqli_query($con, $select);

@@ -136,7 +136,7 @@
 	<div>
 		<?php
 include "connection.php";
-$db = mysqli_select_db($con, "cinema_db");
+$db = mysqli_select_db($con, "movie_ticket_booking_system");
 
 		$qry = "select * from bookingtable where ORDERID = '" . $_GET['id'] . "'";
 		if ((!$_GET['id'])) {
