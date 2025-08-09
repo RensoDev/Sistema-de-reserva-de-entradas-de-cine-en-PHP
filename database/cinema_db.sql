@@ -81,7 +81,7 @@ CREATE TABLE `movietable` (
 
 INSERT INTO `movietable`
 (`movieID`, `movieImg`, `movieTitle`, `movieGenre`, `movieDuration`, `movieRelDate`, `movieDirector`, `movieActors`, `mainhall`, `viphall`, `privatehall`) VALUES
-(1, 'img/movie-poster-1.jpg', 'Los Tipos Malos 2', 'Animation, Comedy, Adventure', 105, '2025-07-18', 'Pierre Perifel', 'Sam Rockwell, Marc Maron, Awkwafina', 0, 0, 0),
+(1, 'img/los-tipos-malos-2.jpg', 'Los Tipos Malos 2', 'Animation, Comedy, Adventure', 105, '2025-07-18', 'Pierre Perifel', 'Sam Rockwell, Marc Maron, Awkwafina', 0, 0, 0),
 (2, 'img/movie-poster-2.jpg', 'La Hora de la Desaparición', 'Thriller, Mystery', 112, '2024-10-11', 'Sofía Álvarez', 'Diego Luna, Ana de la Reguera, Tenoch Huerta', 0, 0, 0),
 (3, 'img/movie-poster-3.jpg', 'Los 4 Fantásticos: Primeros Pasos', 'Action, Adventure, Sci-Fi', 128, '2026-05-02', 'Matt Shakman', 'Ebon Moss-Bachrach, Vanessa Kirby, Joseph Quinn, Pedro Pascal', 0, 0, 0),
 (4, 'img/movie-poster-4.jpg', 'Avengers: Endgame', 'Action, Adventure, Sci-Fi', 181, '2019-04-26', 'Anthony Russo, Joe Russo', 'Robert Downey Jr., Chris Evans, Scarlett Johansson, Mark Ruffalo, Chris Hemsworth', 0, 0, 0),
