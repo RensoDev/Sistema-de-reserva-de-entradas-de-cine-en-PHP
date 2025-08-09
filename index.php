@@ -27,8 +27,7 @@
             <?php
             if ($result = mysqli_query($con, $sql)) {
                 if (mysqli_num_rows($result) > 0) {
-                    for ($i = 0; $i <= 5; $i++) {
-                        $row = mysqli_fetch_array($result);
+                    while ($row = mysqli_fetch_array($result)) {
                         echo '<div class="movie-box">';
                         echo '<img src="' . $row['movieImg'] . '" alt=" ">';
                         echo '<div class="movie-info ">';
@@ -84,43 +83,43 @@
         <div class="trailers-grid">
             <div class="trailers-grid-item">
                 <img src="img/movie-thumb-1.jpg" alt="">
-                <div class="trailer-item-info" data-video="Z1BCujX3pw8">
-                    <h3>Captain Marvel</h3>
+                <div class="trailer-item-info" data-video="5qzJ0tphl2c">
+                    <h3>Los Tipos Malos 2</h3>
                     <i class="far fa-3x fa-play-circle"></i>
                 </div>
             </div>
             <div class="trailers-grid-item">
                 <img src="img/movie-thumb-2.jpg" alt="">
-                <div class="trailer-item-info" data-video="OPEfsEaFv_c">
-                    <h3>Karmat Bytmrmt</h3>
+                <div class="trailer-item-info" data-video="rHC4_Lvzdpo">
+                    <h3>La Hora de la Desaparición</h3>
                     <i class="far fa-3x fa-play-circle"></i>
                 </div>
             </div>
             <div class="trailers-grid-item">
                 <img src="img/movie-thumb-3.jpg" alt="">
-                <div class="trailer-item-info" data-video="cksYkEzUa7k">
-                    <h3>The Lego Movie</h3>
+                <div class="trailer-item-info" data-video="waf9snfaUFw">
+                    <h3>Los 4 Fantásticos: Primeros Pasos</h3>
                     <i class="far fa-3x fa-play-circle"></i>
                 </div>
             </div>
             <div class="trailers-grid-item">
                 <img src="img/movie-thumb-4.jpg" alt="">
-                <div class="trailer-item-info" data-video="Ze5YA4mkzhI">
-                    <h3>Secret Men Club</h3>
+                <div class="trailer-item-info" data-video="kWdQOjtDAJA">
+                    <h3>Avengers: Endgame</h3>
                     <i class="far fa-3x fa-play-circle"></i>
                 </div>
             </div>
             <div class="trailers-grid-item">
                 <img src="img/movie-thumb-5.jpg" alt="">
-                <div class="trailer-item-info" data-video="lbUAVTc7NTo">
-                    <h3>VICE</h3>
+                <div class="trailer-item-info" data-video="LG4DS-L4PZo">
+                    <h3>Avengers: Infinity War</h3>
                     <i class="far fa-3x fa-play-circle"></i>
                 </div>
             </div>
             <div class="trailers-grid-item">
                 <img src="img/movie-thumb-6.jpg" alt="">
-                <div class="trailer-item-info" data-video="RyFlfN4dD14">
-                    <h3>The Vanishing</h3>
+                <div class="trailer-item-info" data-video="IJD1VktHJSw">
+                    <h3>Five Nights at Freddy's</h3>
                     <i class="far fa-3x fa-play-circle"></i>
                 </div>
             </div>
