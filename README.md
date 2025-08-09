@@ -31,6 +31,19 @@ El sistema incluye una simulación de pago con métodos peruanos. Al reservar un
 -   **Yape y Plin:** Muestra un código QR para una simulación de pago.
 -   **Tarjeta de Crédito/Débito:** Muestra un formulario para una simulación de pago con tarjeta.
 
+## Resolucion del Caso Práctico y Fundamentación
+Este sistema de reserva de entradas de cine fue desarrollado aplicando los conocimientos adquiridos a lo largo del curso, incluyendo el manejo de entornos de desarrollo web con servidor local y bases de datos MySQL, la implementación de operaciones CRUD, y buenas prácticas de seguridad y arquitectura.
+
+Se configuró un entorno local usando XAMPP para integrar Apache, PHP y MySQL, facilitando las pruebas y el desarrollo. Se aplicó un diseño modular básico inspirado en el patrón MVC, separando la lógica de negocio, la interfaz y el control, lo que permitió un código más organizado y mantenible.
+
+El sistema utiliza PDO con consultas preparadas para proteger la base de datos contra inyecciones SQL y maneja un sistema de autenticación seguro con contraseñas hasheadas, mejorando la protección de los datos de los usuarios.
+
+Para la experiencia de usuario, se diseñó una interfaz responsiva con Bootstrap, que incluye funcionalidades avanzadas como la selección interactiva de asientos, simulación visual de asientos ocupados y un flujo de pago con métodos populares en Perú (Yape y Plin) mediante códigos QR, así como opción para pagos con tarjeta simulados.
+
+Se usó control de versiones con Git, trabajando con ramas para desarrollar nuevas funcionalidades y resolver problemas de forma ordenada y colaborativa, lo que facilitó la mejora continua del proyecto.
+
+En resumen, este proyecto no solo cumple con los requisitos funcionales del sistema de reservas, sino que también refleja la aplicación práctica de los contenidos del curso, integrando herramientas, metodologías y buenas prácticas para crear una solución robusta, segura y escalable.
+
 ## Desarrollado Por
 
 -   **Renso Abraham Mamani Mamani**
