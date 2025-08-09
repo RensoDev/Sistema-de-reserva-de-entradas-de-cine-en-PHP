@@ -1,12 +1,12 @@
 <?php
 include "config.php";
 
-// Check user login or not
+// Verificar si el usuario ha iniciado sesión
 if (!isset($_SESSION['uname'])) {
     header('Location: index.php');
 }
 
-// logout
+// Cerrar sesión
 if (isset($_POST['but_logout'])) {
     session_destroy();
     header('Location: index.php');
@@ -67,30 +67,68 @@ if (isset($_POST['but_logout'])) {
                         <button type="submit" value="submit" name="submit" class="form-btn">Add Movie</button>
                         <?php
                         if (isset($_POST['submit'])) {
-                            $insert_query = "INSERT INTO 
-                            movieTable (  movieImg,
-                                            movieTitle,
-                                            movieGenre,
-                                            movieDuration,
-                                            movieRelDate,
-                                            movieDirector,
-                                            movieActors,
-                                            mainhall,
-                                            viphall,
-                                            privatehall)
-                            VALUES (        'img/" . $_POST['movieImg'] . "',
-                                            '" . $_POST["movieTitle"] . "',
-                                            '" . $_POST["movieGenre"] . "',
-                                            '" . $_POST["movieDuration"] . "',
-                                            '" . $_POST["movieRelDate"] . "',
-                                            '" . $_POST["movieDirector"] . "',
-                                            '" . $_POST["movieActors"] . "',
-                                            '" . $_POST["mainhall"] . "',
-                                            '" . $_POST["viphall"] . "',
-                                            '" . $_POST["privatehall"] . "')";
-                           $rs= mysqli_query($con, $insert_query);
-                           if ($rs) {
-                            echo "<script>alert('Sussessfully Submitted');
+                            $target_dir = "../img/";
+                            // Asegurarse de que el directorio exista, crearlo si no
+                            if (!file_exists($target_dir)) {
+                                if (!mkdir($target_dir, 0777, true)) {
+                                    die('No se pudo crear el directorio...'); // Se agregó manejo de errores para mkdir
+                                }
+                            }
+                            
+                            $fileName = basename($_FILES["movieImg"]["name"]);
+                            $target_file = $target_dir . $fileName;
+                            $uploadOk = 1;
+                            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+                            // Verificar si el archivo de imagen es una imagen real o falsa
+                            // Verificación básica: si el archivo no está vacío y tiene una extensión
+                            if (!empty($_FILES["movieImg"]["tmp_name"]) && $fileName != '') {
+                                // Verificar si $uploadOk es still 1
+                                if ($uploadOk == 1) {
+                                    // Intentar mover el archivo subido
+                                    if (move_uploaded_file($_FILES["movieImg"]["tmp_name"], $target_file)) {
+                                        $insert_query = "INSERT INTO 
+                                        movieTable (  movieImg,
+                                                        movieTitle,
+                                                        movieGenre,
+                                                        movieDuration,
+                                                        movieRelDate,
+                                                        movieDirector,
+                                                        movieActors,
+                                                        mainhall,
+                                                        viphall,
+                                                        privatehall)
+                                        VALUES (        'img/" . $fileName . "',
+                                                        '" . $_POST["movieTitle"] . "',
+                                                        '" . $_POST["movieGenre"] . "',
+                                                        '" . $_POST["movieDuration"] . "',
+                                                        '" . $_POST["movieRelDate"] . "',
+                                                        '" . $_POST["movieDirector"] . "',
+                                                        '" . $_POST["movieActors"] . "',
+                                                        '" . $_POST["mainhall"] . "',
+                                                        '" . $_POST["viphall"] . "',
+                                                        '" . $_POST["privatehall"] . "')";
+                                        $rs = mysqli_query($con, $insert_query);
+                                        if ($rs) {
+                                            echo "<script>alert('Película añadida exitosamente');
+                                                  window.location.href='addmovie.php';</script>";
+                                        } else {
+                                            echo "<script>alert('Error al guardar la película: " . mysqli_error($con) . "');
+                                                  window.location.href='addmovie.php';</script>";
+                                        }
+                                    } else {
+                                        echo "<script>alert('Hubo un error al subir tu archivo.');
+                                              window.location.href='addmovie.php';</script>";
+                                    }
+                                } else {
+                                    echo "<script>alert('Hubo un error con la validación del archivo.');
+                                          window.location.href='addmovie.php';</script>";
+                                }
+                            } else {
+                            // Manejar el caso en que no se subió ningún archivo pero se presionó enviar
+                            // Por ahora, simplemente insertaremos sin imagen o mostraremos un error
+                            // Un mejor enfoque podría ser hacer que el campo de archivo sea obligatorio o manejarlo de manera diferente
+                            echo "<script>alert('Por favor, selecciona una imagen para la película.');
                                   window.location.href='addmovie.php';</script>";
                         }
                         }
@@ -110,15 +148,15 @@ if (isset($_POST['but_logout'])) {
                             <th>Movie_Genre</th>
                             <th>Release_date</th>
                             <th>Director</th>
-                            <th>More</th>
-                            
+                            <th>Más</th>
+                            <th>Editar</th>
                         </tr>
                         <tbody>
                             <?php
                             $host = "localhost"; /* Host name */
                             $user = "root"; /* User */
                             $password = ""; /* Password */
-                            $dbname = "cinema_db"; /* Database name */
+                            $dbname = "movie_ticket_booking_system"; /* Database name */
 
                             $con = mysqli_connect($host, $user, $password, $dbname);
                             $select = "SELECT * FROM `movietable`";
@@ -136,8 +174,8 @@ if (isset($_POST['but_logout'])) {
                                     <td><?php echo $genere; ?></td>
                                     <td><?php echo $releasedate; ?></td>
                                     <td><?php echo $movieactor; ?></td>
-                                    <!--<td><?php echo  "<a href='deletemovie.php?id=" . $row['movieID'] . "'>delete</a>"; ?></td>-->
-                                    <td><button value="Book Now!" type="submit" onclick="" type="button" class="btn btn-danger"><?php echo  "<a href='deletemovie.php?id=" . $row['movieID'] . "'>delete</a>"; ?></button></td>
+                                    <td><button value="Eliminar" type="submit" onclick="" type="button" class="btn btn-danger"><?php echo  "<a href='deletemovie.php?id=" . $row['movieID'] . "'>Eliminar</a>"; ?></button></td>
+                                    <td><button value="Editar" type="button" class="btn btn-warning"><?php echo  "<a href='editmovie.php?id=" . $row['movieID'] . "'>Editar</a>"; ?></button></td>
                                 </tr>
                             <?php }
                             ?>
