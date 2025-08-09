@@ -4,6 +4,9 @@ Este es un sistema de reserva de entradas de cine desarrollado en PHP, con un fr
 
 El sistema permite a los usuarios consultar las películas recientes, reservar y cancelar entradas, y verificar el estado de sus reservas. El objetivo es proporcionar una plataforma sencilla para que las personas puedan comprar entradas de cine de forma fácil y accesible desde cualquier lugar.
 
+## Proyecto inspirado en:
+- **https://github.com/aman05382/movie_ticket_booking_system_php?tab=readme-ov-file**
+
 ## Características
 
 - **Panel de Administración:** Un panel completo para gestionar películas, funciones, reservas y comentarios de los usuarios.
