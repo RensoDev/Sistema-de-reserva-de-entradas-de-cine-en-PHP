@@ -1,12 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.0.4
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Dec 14, 2020 at 08:29 AM
--- Server version: 10.4.16-MariaDB
--- PHP Version: 7.4.12
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -88,13 +79,14 @@ CREATE TABLE `movietable` (
 -- Dumping data for table `movietable`
 --
 
-INSERT INTO `movietable` (`movieID`, `movieImg`, `movieTitle`, `movieGenre`, `movieDuration`, `movieRelDate`, `movieDirector`, `movieActors`, `mainhall`, `viphall`, `privatehall`) VALUES
-(1, 'img/movie-poster-1.jpg', 'Captain Marvel', ' Action, Adventure, Sci-Fi ', 220, '2018-10-18', 'Anna Boden, Ryan Fleck', 'Brie Larson, Samuel L. Jackson, Ben Mendelsohn', 0, 0, 0),
-(2, 'img/movie-poster-2.jpg', 'Qarmat Bitamrmat  ', 'Comedy', 110, '2018-10-18', 'Assad Fouladkar', 'Ahmed Adam, Bayyumy Fouad, Salah Abdullah , Entsar, Dina Fouad ', 0, 0, 0),
-(3, 'img/movie-poster-3.jpg', 'The Lego Movie', 'Animation, Action, Adventure', 110, '2014-02-07', 'Phil Lord, Christopher Miller', 'Chris Pratt, Will Ferrell, Elizabeth Banks', 0, 0, 0),
-(4, 'img/movie-poster-4.jpg', 'Nadi Elregal Elserri ', 'Comedy', 105, '2019-01-23', ' Ayman Uttar', 'Karim Abdul Aziz, Ghada Adel, Maged El Kedwany, Nesreen Tafesh, Bayyumy Fouad, Moataz El Tony ', 0, 0, 0),
-(5, 'img/movie-poster-5.jpg', 'VICE', 'Biography, Comedy, Drama', 132, '2018-12-25', 'Adam McKay', 'Christian Bale, Amy Adams, Steve Carell', 0, 0, 0),
-(6, 'img/movie-poster-6.jpg', 'The Vanishing', 'Crime, Mystery, Thriller', 107, '2019-01-04', 'Kristoffer Nyholm', 'Gerard Butler, Peter Mullan, Connor Swindells', 0, 0, 0);
+INSERT INTO `movietable`
+(`movieID`, `movieImg`, `movieTitle`, `movieGenre`, `movieDuration`, `movieRelDate`, `movieDirector`, `movieActors`, `mainhall`, `viphall`, `privatehall`) VALUES
+(1, 'img/movie-poster-1.jpg', 'Los Tipos Malos 2', 'Animation, Comedy, Adventure', 105, '2025-07-18', 'Pierre Perifel', 'Sam Rockwell, Marc Maron, Awkwafina', 0, 0, 0),
+(2, 'img/movie-poster-2.jpg', 'La Hora de la Desaparición', 'Thriller, Mystery', 112, '2024-10-11', 'Sofía Álvarez', 'Diego Luna, Ana de la Reguera, Tenoch Huerta', 0, 0, 0),
+(3, 'img/movie-poster-3.jpg', 'Los 4 Fantásticos: Primeros Pasos', 'Action, Adventure, Sci-Fi', 128, '2026-05-02', 'Matt Shakman', 'Ebon Moss-Bachrach, Vanessa Kirby, Joseph Quinn, Pedro Pascal', 0, 0, 0),
+(4, 'img/movie-poster-4.jpg', 'Avengers: Endgame', 'Action, Adventure, Sci-Fi', 181, '2019-04-26', 'Anthony Russo, Joe Russo', 'Robert Downey Jr., Chris Evans, Scarlett Johansson, Mark Ruffalo, Chris Hemsworth', 0, 0, 0),
+(5, 'img/movie-poster-5.jpg', 'Avengers: Infinity War', 'Action, Adventure, Sci-Fi', 149, '2018-04-27', 'Anthony Russo, Joe Russo', 'Robert Downey Jr., Chris Hemsworth, Mark Ruffalo, Chris Evans, Scarlett Johansson', 0, 0, 0),
+(6, 'img/movie-poster-6.jpg', 'Five Nights at Freddy\'s', 'Horror, Mystery, Thriller', 110, '2023-10-27', 'Emma Tammi', 'Josh Hutcherson, Matthew Lillard, Elizabeth Lail', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -169,7 +161,7 @@ ALTER TABLE `feedbacktable`
 -- AUTO_INCREMENT for table `movietable`
 --
 ALTER TABLE `movietable`
-  MODIFY `movieID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `movieID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
