@@ -13,6 +13,7 @@ $date = $_POST['date'];
 $time = $_POST['hour'];
 $movieid = $_POST['movie_id'];
 $seats = $_POST['selected_seats'];
+$paymentMethod = $_POST['payment_method']; // New: Get payment method
 $order = "ARVR" . rand(10000, 99999999);
 $cust  = "CUST" . rand(1000, 999999);
 
@@ -32,6 +33,9 @@ $movieQuery = "SELECT movieTitle FROM movieTable WHERE movieID = $movieid";
 $movieResult = mysqli_query($con, $movieQuery);
 $movieRow = mysqli_fetch_array($movieResult);
 $movieTitle = $movieRow['movieTitle'];
+
+// QR Code generation logic
+$qrCodePath = 'Verify.png'; // Always use Verify.png as requested
 
 //conditions
 if ((!$_POST['submit'])) {
@@ -57,7 +61,8 @@ if (isset($_POST['submit'])) {
             'theatre' => $theatre,
             'type' => $type,
             'date' => $date,
-            'time' => $time
+            'time' => $time,
+            'qr_code_path' => urlencode($qrCodePath) // New: Pass QR code path
         ]);
         header("Location: " . $redirect_url);
         exit; // Ensure script stops after redirect
